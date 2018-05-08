@@ -1,0 +1,19 @@
+cafe run ENVIRONMENT=cms1a --format html -o resultscms1a.html
+cafe run ENVIRONMENT=cms1b --format html -o resultscms1b.html
+cafe run ENVIRONMENT=cms1c --format html -o resultscms1c.html
+cafe run ENVIRONMENT=cms1d --format html -o resultscms1d.html
+
+cafe run ENVIRONMENT=cms2a --format html -o resultscms2a.html
+cafe run ENVIRONMENT=cms2b --format html -o resultscms2b.html
+cafe run ENVIRONMENT=cms2c --format html -o resultscms2c.html
+cafe run ENVIRONMENT=cms2d --format html -o resultscms2d.html
+
+cafe run ENVIRONMENT=cms3a --format html -o resultscms3a.html
+cafe run ENVIRONMENT=cms3b --format html -o resultscms3b.html
+cafe run ENVIRONMENT=cms3c --format html -o resultscms3c.html
+cafe run ENVIRONMENT=cms3d --format html -o resultscms3d.html
+
+cafe run ENVIRONMENT=cms4a --format html -o resultscms4a.html
+cafe run ENVIRONMENT=cms4b --format html -o resultscms4b.html
+cafe run ENVIRONMENT=cms4c --format html -o resultscms4c.html
+cafe run ENVIRONMENT=cms4d --format html -o resultscms4d.html

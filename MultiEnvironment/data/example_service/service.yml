@@ -1,0 +1,1 @@
+url: "Provider.svc/GetList/GETPRFLOCINFO/prvdr_id%7C<%=service_provider_id%>$strlat%7C<%= service_lat %>$strlng%7C<%= service_long %>"

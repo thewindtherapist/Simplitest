@@ -1,0 +1,4 @@
+cafe run ENVIRONMENT=SysTest --format html -o resultsEven.html --tags @even
+# cafe run ENVIRONMENT=B2 --format html -o resultsOdd.html --tags @odd
+
+

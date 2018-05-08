@@ -1,0 +1,5 @@
+
+Header1CSS: "css:html > body > table > tbody > tr > th:first-child"
+Header2Xpath: "xpath:/html/body/table/tbody/tr[1]/th[2]"
+SquirrelImageCSS: "css:img"
+SquirrelImageXpath: "xpath:/html/body/img[1]"

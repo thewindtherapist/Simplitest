@@ -1,0 +1,20 @@
+# This file lets you create shortcuts for running your test suite.
+# The simplest use case for this would be when you have multiple environments (in the environments.yml file)
+# then you might want to create different profiles for each environment as such:
+# production: "ENVIRONMENT=Production -r features/support features"
+# testing: "ENVIRONMENT=Testing -r features/support features"
+# devb1: "ENVIRONMENT=DEVB1 -r features/support features"
+# Then you can run your tests against those environments with commands like these:
+# cucumber --profile testing
+# cucumber --profile devb1
+#
+# For a full description of options available here check out: https://github.com/cucumber/cucumber/wiki/cucumber.yml
+#
+# *********************************************************************************************
+<% common = '-r features/support features --format html -o results.html' %>
+<% without_wip = '--tags ~@wip' %>
+default: <%= common %> <%= without_wip %>
+
+production: ENVIRONMENT=Production <%= common %> <%= without_wip%>
+B2: ENVIRONMENT=B2 <%= common %> <%= without_wip%>
+SysTest: ENVIRONMENT=SysTest <%= common %> <%= without_wip%>

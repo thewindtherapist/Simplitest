@@ -1,0 +1,23 @@
+Production: "http://medicare.gov/"
+B2: "http://medicare-iterationb2-test.cgifederal.com/hospitalcompare/"
+SysTest: "http://medicare-systest-test.cgifederal.com/hospitalcompare/"
+
+medicare1a: "http://www1a.medicare.gov/"
+medicare1b: "http://www1b.medicare.gov/"
+medicare1c: "http://www1c.medicare.gov/"
+medicare1d: "http://www1d.medicare.gov/"
+
+medicare2a: "http://www2a.medicare.gov/"
+medicare2b: "http://www2b.medicare.gov/"
+medicare2c: "http://www2c.medicare.gov/"
+medicare2d: "http://www2d.medicare.gov/"
+
+medicare3a: "http://www3a.medicare.gov/"
+medicare3b: "http://www3b.medicare.gov/"
+medicare3c: "http://www3c.medicare.gov/"
+medicare3d: "http://www3d.medicare.gov/"
+
+medicare4a: "http://www4a.medicare.gov/"
+medicare4b: "http://www4b.medicare.gov/"
+medicare4c: "http://www4c.medicare.gov/"
+medicare4d: "http://www4d.medicare.gov/"

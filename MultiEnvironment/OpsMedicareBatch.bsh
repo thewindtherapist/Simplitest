@@ -1,0 +1,19 @@
+cafe run ENVIRONMENT=medicare1a --format html -o resultsMedicare1a.html
+cafe run ENVIRONMENT=medicare1b --format html -o resultsMedicare1b.html
+cafe run ENVIRONMENT=medicare1c --format html -o resultsMedicare1c.html
+cafe run ENVIRONMENT=medicare1d --format html -o resultsMedicare1d.html
+
+# cafe run ENVIRONMENT=medicare2a --format html -o resultsMedicare2a.html
+# cafe run ENVIRONMENT=medicare2b --format html -o resultsMedicare2b.html
+# cafe run ENVIRONMENT=medicare2c --format html -o resultsMedicare2c.html
+# cafe run ENVIRONMENT=medicare2d --format html -o resultsMedicare2d.html
+
+# cafe run ENVIRONMENT=medicare3a --format html -o resultsMedicare3a.html
+# cafe run ENVIRONMENT=medicare3b --format html -o resultsMedicare3b.html
+# cafe run ENVIRONMENT=medicare3c --format html -o resultsMedicare3c.html
+# cafe run ENVIRONMENT=medicare3d --format html -o resultsMedicare3d.html
+
+# cafe run ENVIRONMENT=medicare4a --format html -o resultsMedicare4a.html
+# cafe run ENVIRONMENT=medicare4b --format html -o resultsMedicare4b.html
+# cafe run ENVIRONMENT=medicare4c --format html -o resultsMedicare4c.html
+# cafe run ENVIRONMENT=medicare4d --format html -o resultsMedicare4d.html
