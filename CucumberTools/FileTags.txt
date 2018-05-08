@@ -1,0 +1,15 @@
+@servertesting @smoketest SmokeTests/PHC_7509_HCPspecialty/PHC_7509_HCPspecialty.feature}
+@servertesting @smoketest SmokeTests/PHC_7644_HCPkeyword/PHC_7644_HCPkeywordFoot.feature}
+@servertesting @smoketest SmokeTests/PHC_7644_HCPkeyword/PHC_7644_HCPkeywordHead.feature}
+@servertesting @smoketest SmokeTests/PHC_7644_HCPkeyword/PHC_7644_HCPkeywordMapView.feature}
+@servertesting @smoketest SmokeTests/PHC_7644_HCPkeyword/PHC_7644_HCPkeywordShowHide.feature}
+@servertesting SmokeTests/PHC_7644_HCPkeyword/PHC_7644_HCPkeywordHome.feature}
+@servertesting SmokeTests/PHC_7661_GRPspecialty/PHC-7661 Group Practice Search by Specialty.feature}
+@smoketest @servertesting2 SmokeTests/PHC_7687_SAWsearch/PHC-7687 Search Another Way workflow.feature}
+@smoketest @servertesting2 SmokeTests/PHC_7732_ACOname/PHC-7732_ACOverify2grp.feature}
+@smoketest @servertesting2 SmokeTests/PHC_7732_ACOname/PHC-7732_ACOverify3grp.feature}
+@smoketest @servertesting2 SmokeTests/PHC_7732_ACOname/PHC_7732_ACONoEntry.feature}
+@smoketest @servertesting2 SmokeTests/PHC_7732_ACOname/PHC_7732_ACOVerifySingleACO.feature}
+@smoketest @servertesting2 SmokeTests/PHC_7732_ACOname/PHC_7732_NoACOexists.feature}
+@smoketest SmokeTests/PHC_6665_ACOprofileNavigation/PHC-6665 ACO_Left_Hand_Navigation.feature}
+@smoketest SmokeTests/PHC_7837_GRPbyKeyword/PHC_7837_SrchGRPbyKeywordResultPg.feature}
