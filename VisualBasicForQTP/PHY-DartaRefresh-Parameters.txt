@@ -1,0 +1,36 @@
+				Case "New_Physicians" , "New_OHP"   'Physicians layout
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " VALIDATION STARTED "," Begin Sheet validation"
+'								AddressSql="SELECT  prvd.[prvdr_id] ,prvd.[fst_name] ,prvd.[lst_name], addr.city ,addr.[state], spc.spclty_id " +_
+'								"FROM %database.[PHYSN_PRVDR] prvd " +_
+'								"inner join %database.[PHYSN_PRVDR_ADRS] addx  on prvd.prvdr_id=addx.prvdr_id "+_
+'								"inner join %database.[PHYSN_ADRS_LP] addr  on addx.adrs_id= addr.adrs_id " +_
+'								"inner join %database.[PHYSN_PRVDR_SPCLTY] spc   on prvd.prvdr_id=spc.prvdr_id"
+'								WhereClause ="where prvd.[prvdr_id]=%prvdr and spc.spclty_id=%spc and addr.[city]=%city"					
+'								NewProviders oConn,datacolumnNameArray,SheetNameArray(CurrentSheet),addressSql,Whereclause,0,5,3
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " DATABASE VALIDATION FINISHED"," End validation"
+
+				 Case "Physn_New_Indv_Adrs" ,"OHP_New_Indv_Adrs"  'Physicians layout
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " Test Started "," Begin validation"
+'								AddressSql="SELECT  prvd.[prvdr_id] ,[fst_name] ,[lst_name] ,addr.adrs, addr.adrs2,addr.city ,addr.[state],addr.zip,spc.spclty_id " +_
+'								"FROM %database.[PHYSN_PRVDR] prvd " +_
+'								"inner join %database.[PHYSN_PRVDR_ADRS] addx  on prvd.prvdr_id=addx.prvdr_id "+_
+'								"inner join %database.[PHYSN_ADRS_LP] addr  on addx.adrs_id= addr.adrs_id " +_
+'								"inner join %database.[PHYSN_PRVDR_SPCLTY] spc   on prvd.prvdr_id=spc.prvdr_id "
+'								WhereClause =" where prvd.[prvdr_id]=%prvdr and spc.spclty_id=%spc and addr.[City]=%city"			
+'								NewProviders oConn,datacolumnNameArray,SheetNameArray(CurrentSheet),addressSql,Whereclause,0,8,5
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " DATABASE VALIDATION FINISHED"," End validation"
+
+				 Case "New_Prvdr_Org_ParStatus"  'Physicians layout
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " VALIDATION STARTED "," Begin Sheet validation"
+'								AddressSql="SELECT prvd.[prvdr_id],[fst_name],[lst_name],org.org_pac_id,orgname.org_legal_name,org.org_par_status,'19980101',' ',spc.spclty_id" +_
+'								"FROM %database.[PHYSN_PRVDR] prvd " +_
+'								"inner  inner join %database.[PHYSN_ORG_PRVDR] org   on prvd.prvdr_id=org.prvdr_id "+_
+'								"inner join %database.[PHYSN_ORG_LP] orgname on org.org_pac_id=orgname.org_pac_id " +_
+'								" inner join %database.[PHYSN_PRVDR_SPCLTY] spc on prvd.prvdr_id=spc.prvdr_id"
+'								WhereClauseFieldrarray=array("[prvdr_id]")
+'								New_Prvdr_Org_ParStatus oConn, datacolumnNameArray,DatasheetName,SqlStr,Whereclause,0
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " DATABASE VALIDATION FINISHED "," End validation"
+
+					Case "New_Prvdr_Par_Status"  'Physicians layout
+					Case "No_Pecos_Locs"  'Physicians layout
+					Case "No_Licensed_Locs"  'Physicians layout

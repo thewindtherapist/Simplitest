@@ -1,0 +1,152 @@
+Sub DFCWebCheck (rs,providerid,sheetname,recordarray,namearray)
+'
+Set TitleVar= description.Create
+TitleVar("title").value =environment.Value("Title")
+
+Set TabClick=description.Create
+TabClick("html id").value = "tab0"
+ToolURL=environment.Value("TestingURL") +environment.Value("ProfilePageURL") 
+ToolURL=left(ToolURL,len(ToolURL)-6)
+
+ToolURL=ToolURL+providerid
+
+Set ResultBrowser = CreateObject("InternetExplorer.Application")
+ResultBrowser.Visible = true
+ResultBrowser.Navigate2 ToolURL
+
+'Forming array for ownership type
+'Three records in DFC_Ownership_LKP table, easier to just make array for ownership then 
+OwnerShipArray=array("Profit","Non-Profit","Not Available")
+
+For i=0 to ubound(recordarray)
+datasheetname=namearray(i)
+checkValue=false
+'Vertifies Name
+		If recordarray(i)="prvdr_name" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("class:=name_of","index:=0").GetROProperty("innertext")
+checkValue=true
+		End If
+
+'Vertifies Address1
+		If recordarray(i)="prvdr_adr1" Then
+						DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("class:=address1","index:=0").GetROProperty("innertext")
+				WebTableExtraction=NoSymbols(WebTableExtraction)
+						DataRefreshValue=NoSymbols(DataRefreshValue)
+						checkValue=true
+		end if
+
+'Vertifies Address2  'Address 2 is city state, zip on web page
+		If recordarray(i)="prvdr_city" Then 
+	WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("class:=address2","index:=0").GetROProperty("innertext")
+	WebTableExtraction=NoSymbols(WebTableExtraction)
+				DataRefreshValue=datatable(DatasheetName,sheetname)
+		'Makes a string of city, state, and zip code
+			DataRefreshValue=DataRefreshValue+datatable(namearray(i+1),sheetname)
+			DataRefreshValue=DataRefreshValue+datatable(namearray(i+2),sheetname)
+		DataRefreshValue=NoSymbols(DataRefreshValue)
+		i=i+2
+		checkValue=true
+		End If
+
+'Vertifies Phone
+		If recordarray(i)="prvdr_tel" Then
+						DataRefreshValue=datatable(DatasheetName,sheetname)
+	DataRefreshValue=NoSymbols(DataRefreshValue)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("class:=phone","index:=0").GetROProperty("innertext")
+				WebTableExtraction=NoSymbols(WebTableExtraction)
+				checkValue=true
+		end if
+
+'Network 
+'	If recordarray(i)="network" Then
+'		end if
+
+''County 
+'	If recordarray(i)="prvdr_county" Then
+'		end if
+
+'Ownrshp_type 
+	If recordarray(i)="Ownrshp_type" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralOwnership").GetROProperty("innertext")
+			temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+			DataRefreshValue=OwnerShipArray(DataRefreshValue-1)
+			WebTableExtraction=NoSymbols(WebTableExtraction)
+			DataRefreshValue=NoSymbols(DataRefreshValue)
+			checkValue=true
+	end if
+
+'prvdr_owner_nm 
+	If recordarray(i)="prvdr_owner_nm" Then
+		DataRefreshValue=datatable(DatasheetName,sheetname)
+		WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralCompany").GetROProperty("innertext")
+					temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+							WebTableExtraction=NoSymbols(WebTableExtraction)
+						DataRefreshValue=NoSymbols(DataRefreshValue)
+						checkValue=true
+		end if
+
+'prvdr_after5 
+	If recordarray(i)="prvdr_after5" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralShifts").GetROProperty("innertext")
+			temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+			checkValue=true
+		end if
+
+'tot_stat 
+	If recordarray(i)="tot_stat" Then
+				DataRefreshValue=datatable(DatasheetName,sheetname)
+		WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralStations").GetROProperty("innertext")
+					temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+							WebTableExtraction=NoSymbols(WebTableExtraction)
+						DataRefreshValue=NoSymbols(DataRefreshValue)
+						checkValue=true
+		end if
+
+'prvdr_incenter_hemo 
+	If recordarray(i)="prvdr_incenter_hemo" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralInCenter").GetROProperty("innertext")
+			temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+			checkValue=true
+		end if
+
+'prvdr_perit_dial 
+	If recordarray(i)="prvdr_perit_dial" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralPeritoneal").GetROProperty("innertext")
+			temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+			checkValue=true
+		end if
+
+'prvdr_Home_hemo_train 
+	If recordarray(i)="prvdr_Home_hemo_train" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralHomeTrng").GetROProperty("innertext")
+			temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+			checkValue=true
+		end if
+
+'crtfctn_dt 
+	If recordarray(i)="crtfctn_dt" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("html id:=GeneralInitDtOfCert").GetROProperty("innertext")
+						temparray=split(WebTableExtraction,":")
+			WebTableExtraction=temparray(1)  'All text after the colon
+			checkValue=true
+		end if
+
+'Compares what is found on page to what is found in data refresh
+If checkValue=true Then
+	CompareItems WebTableExtraction ,DataRefreshValue,"  WEB VALUE " & WebTableExtraction & "  DATA REFRESH " &  DataRefreshValue , " WEB VALIDATION: "  &rs.fields(recordarray(i)).name
+End If

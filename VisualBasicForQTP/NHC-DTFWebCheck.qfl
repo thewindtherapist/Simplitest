@@ -1,0 +1,55 @@
+Sub NHCWebCheck (rs,providerid,sheetname,recordarray,namearray)
+'
+Set TitleVar= description.Create
+TitleVar("title").value =environment.Value("Title")
+
+Set TabClick=description.Create
+TabClick("html id").value = "tab0"
+ToolURL=environment.Value("TestingURL") +environment.Value("ProfilePageURL") 
+ToolURL=left(ToolURL,len(ToolURL)-6)
+
+ToolURL=ToolURL+providerid
+
+Set ResultBrowser = CreateObject("InternetExplorer.Application")
+ResultBrowser.Visible = true
+ResultBrowser.Navigate2 ToolURL
+'ResultBrowser.Quit
+
+For i=0 to ubound(recordarray)
+datasheetname=namearray(i)
+'Vertifies Name
+		If recordarray(i)="prvdr_name" Then
+			DataRefreshValue=datatable(DatasheetName,sheetname)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("class:=name_of","index:=0").GetROProperty("innertext")
+
+		End If
+
+'Vertifies Address1
+		If recordarray(i)="prvdr_address1" Then
+		end if
+
+'Vertifies Address2  'Address 2 is city state, zip on web page
+		If recordarray(i)="prvdr_city" Then 
+	WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("class:=address2","index:=0").GetROProperty("innertext")
+	WebTableExtraction=NoSymbols(WebTableExtraction)
+				DataRefreshValue=datatable(DatasheetName,sheetname)
+		'Makes a string of city, state, and zip code
+			DataRefreshValue=DataRefreshValue+datatable(namearray(i+1),sheetname)
+			DataRefreshValue=DataRefreshValue+datatable(namearray(i+2),sheetname)
+		DataRefreshValue=NoSymbols(DataRefreshValue)
+		i=i+2
+		End If
+
+'Vertifies Phone
+		If recordarray(i)="prvdr_tel" Then
+						DataRefreshValue=datatable(DatasheetName,sheetname)
+	DataRefreshValue=NoSymbols(DataRefreshValue)
+			WebTableExtraction = Browser(TitleVar).Page(TitleVar).webelement("class:=phone","index:=0").GetROProperty("innertext")
+				WebTableExtraction=NoSymbols(WebTableExtraction)
+		end if
+
+'Compares what is found on page to what is found in data refresh
+CompareItems WebTableExtraction ,DataRefreshValue,"WEB VALUE " & WebTableExtraction & "  DATA REFRESH " &  DataRefreshValue , "WEB VALIDATION: "  &rs.fields(recordarray(i)).name
+next
+ResultBrowser.quit	
+End Sub

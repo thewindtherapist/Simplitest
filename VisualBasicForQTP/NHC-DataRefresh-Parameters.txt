@@ -1,0 +1,25 @@
+					Case "New" 'Nursing Home refresh
+''								'START WITH VALIDATING DATABASE
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " DATABASE VALIDATION STARTED "," Begin Sheet validation"
+''								SQLstr="SELECT [prvdr_id], [prvdr_name],  [prvdr_adr1], [prvdr_city],[prvdr_state],[prvdr_zip5]  FROM  [NursingHome].[dbo].[NHC_PRVDR] where prvdr_id="+chr(39)+"%1"+chr(39) 
+'
+'							SQLstr="SELECT prvdr_id, prvdr_name, prvdr_adr1, prvdr_city, prvdr_state, prvdr_zip5, prvdr_tel, prvdr_county, low_perf_prvdr, ovrl_str_rtg, insp_str_rtg, stf_str_rtg, rn_staffing_rating, qlty_msr_str_rtg  FROM  [NursingHome].[dbo].[NHC_PRVDR] where prvdr_id="+chr(39)+"%1"+chr(39) 
+'							WhereClauseFieldrarray=array(1)
+'								NewRecords oConn, "blah",datacolumnNameArray,"New",SqlStr,WhereClauseFieldrarray
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " DATABASE VALIDATION FINISHED "," End validation"
+'
+'								'VALIDATE WEB PAGE
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " FRONT END VALIDATION STARTED "," Begin Sheet validation"
+'								NHCWebCheck SheetNameArray(CurrentSheet),datacolumnNameArray
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + "FRONT END VALIDATION FINISHED "," Begin Sheet validation"
+'
+
+					Case "Old" ,"Deleted" ' Nursing Home refresh
+								'START WITH VALIDATING DATABASE
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " DATABASE VALIDATION STARTED "," Begin Sheet validation"
+''								SQLstr="SELECT [year], [carrier],  [description], [curr], [alt_order] FROM  [PFSS].[dbo].[carrier_lookup] where year="+chr(39)+"%1"+chr(39) +" and carrier=%2"
+'
+'						SQLstr="SELECT prvdr_id, prvdr_name, prvdr_adr1, prvdr_city, prvdr_state, prvdr_zip5, prvdr_tel, prvdr_county, low_perf_prvdr, ovrl_str_rtg, insp_str_rtg, stf_str_rtg, rn_staffing_rating, qlty_msr_str_rtg  FROM  [NursingHome].[dbo].[NHC_PRVDR] where prvdr_id="+chr(39)+"%1"+chr(39) 
+'								WhereClauseFieldrarray=array(1)
+'								DeletedRecords oConn, datacolumnNameArray,"Old",SqlStr,WhereClauseFieldrarray
+'								reporter.ReportEvent micDone,SheetNameArray(CurrentSheet) + " DATABASE VALIDATION FINISHED "," End validation"
